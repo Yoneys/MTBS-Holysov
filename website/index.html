@@ -7,8 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-  
-/* reset a proměné */
+/* ── Reset & Variables ─────────────────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 
@@ -37,7 +36,7 @@ body {
   overflow-x: hidden;
 }
 
-/* NAVIGACE */
+/* ── NAV ───────────────────────────────────────────────────────────────── */
 nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   height: 68px;
@@ -68,7 +67,7 @@ nav {
 }
 .nav-cta:hover { background: var(--gold-2) !important; }
 
-/* HERO nastavení */
+/* ── HERO ──────────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
   background: var(--navy);
@@ -167,7 +166,7 @@ h1 em { font-style:italic; color:var(--sky); }
 }
 .stats-footer strong { font-family:'DM Serif Display',serif; font-size:1.2rem; color:var(--sky); }
 
-/* SEKCE */
+/* ── SECTION COMMONS ───────────────────────────────────────────────────── */
 section { padding:6rem 3rem; }
 .container { max-width:1180px; margin:0 auto; }
 .sec-eyebrow {
@@ -191,7 +190,7 @@ section { padding:6rem 3rem; }
 .reveal.d3 { transition-delay:.3s; }
 .reveal.d4 { transition-delay:.4s; }
 
-/* ABOUT INFORMACE */
+/* ── ABOUT ─────────────────────────────────────────────────────────────── */
 .about { background:var(--cream); }
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
 .about-text p { font-size:.92rem; color:#374151; line-height:1.8; margin-bottom:1rem; }
@@ -222,7 +221,7 @@ section { padding:6rem 3rem; }
 }
 .av-sub { font-size:.75rem; color:rgba(244,239,230,.45); line-height:1.5; }
 
-/* SLUŽBY */
+/* ── SERVICES ──────────────────────────────────────────────────────────── */
 .services { background:var(--warm); }
 .services-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
@@ -247,7 +246,7 @@ section { padding:6rem 3rem; }
 .srv-name { font-family:'DM Serif Display',serif; font-size:1.1rem; color:var(--navy); margin-bottom:.6rem; transition:color .25s; }
 .srv-desc { font-size:.82rem; color:var(--muted); line-height:1.6; transition:color .25s; }
 
-/* NOVINKY */
+/* ── NEWS ──────────────────────────────────────────────────────────────── */
 .news { background:var(--navy); }
 .news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
 .news-card {
@@ -271,7 +270,7 @@ section { padding:6rem 3rem; }
 }
 .news-body { font-size:.8rem; color:rgba(244,239,230,.5); line-height:1.65; }
 
-/* KONTAKTY */
+/* ── CONTACT ───────────────────────────────────────────────────────────── */
 .contact { background:var(--cream); }
 .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; }
 .contact-info-block { display:flex; flex-direction:column; gap:1.5rem; margin-top:1.5rem; }
@@ -289,7 +288,110 @@ section { padding:6rem 3rem; }
 .hour-day { font-size:.8rem; font-weight:600; color:var(--navy); }
 .hour-time { font-size:.8rem; color:var(--muted); }
 
-/* FORMA */
+/* ── Contact tabs ── */
+.contact-tabs {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-bottom: 2rem;
+}
+.ctab {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: .45rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: .75rem; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  transition: all .2s;
+}
+.ctab:hover  { border-color: var(--steel); color: var(--navy); }
+.ctab.active { background: var(--navy); border-color: var(--navy); color: white; }
+
+/* ── Department panel ── */
+.dept-panel { display: none; }
+.dept-panel.active { display: block; }
+
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.person-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.4rem 1.5rem;
+  transition: box-shadow .2s, transform .2s;
+}
+.person-card:hover {
+  box-shadow: 0 6px 20px rgba(15,31,53,.08);
+  transform: translateY(-2px);
+}
+.person-card.wide { grid-column: span 2; }
+
+.pc-role {
+  font-size: .62rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .35rem;
+}
+.pc-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem; color: var(--navy);
+  margin-bottom: .9rem; line-height: 1.2;
+}
+.pc-name.dept { font-size: .9rem; font-style: italic; color: var(--muted); }
+.pc-contacts { display: flex; flex-direction: column; gap: .35rem; }
+.pc-row {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .78rem; color: var(--text);
+}
+.pc-row a { color: var(--steel); text-decoration: none; }
+.pc-row a:hover { text-decoration: underline; }
+.pc-ico {
+  width: 20px; height: 20px;
+  background: var(--warm); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; flex-shrink: 0;
+}
+
+/* ── Right column (emergency + SVJ) ── */
+.contact-right { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-box {
+  background: var(--navy);
+  border-radius: 14px; padding: 2rem;
+  border: 1px solid rgba(200,146,42,.15);
+}
+.contact-box.light {
+  background: white;
+  border: 1px solid var(--border);
+}
+.cb-eyebrow {
+  font-size: .62rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .4rem;
+}
+.contact-box.light .cb-eyebrow { color: var(--steel); }
+.cb-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem; color: var(--gold-2);
+  margin-bottom: .4rem; line-height: 1.1;
+}
+.contact-box.light .cb-number { color: var(--navy); font-size: 1.2rem; }
+.cb-desc {
+  font-size: .8rem; color: rgba(244,239,230,.5);
+  line-height: 1.6; margin-bottom: 0;
+}
+.contact-box.light .cb-desc { color: var(--muted); }
+.cb-divider {
+  border: none; border-top: 1px solid rgba(255,255,255,.08);
+  margin: 1.25rem 0;
+}
+.contact-box.light .cb-divider { border-color: var(--border); }
+
+@media(max-width:640px) {
+  .person-card.wide { grid-column: span 1; }
+}
+/* ── FORM SECTION ──────────────────────────────────────────────────────── */
 .form-section { background:var(--warm); }
 .form-card {
   background:white; border:1px solid var(--border); border-radius:14px;
@@ -335,7 +437,7 @@ textarea { resize:vertical; min-height:88px; }
 .f-err  { font-size:.68rem; color:var(--error-c); display:none; }
 hr.divider { border:none; border-top:1px solid var(--border); margin:1.5rem 0; }
 
-/* VÝBĚR FORMULÁŘE */
+/* ── Form picker ── */
 .form-picker { text-align:center; padding:.5rem 0 1rem; }
 .form-picker-title { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--navy); margin-bottom:.4rem; }
 .form-picker-sub   { font-size:.85rem; color:var(--muted); margin-bottom:2rem; }
@@ -351,7 +453,7 @@ hr.divider { border:none; border-top:1px solid var(--border); margin:1.5rem 0; }
 .form-type-name { font-size:.78rem; font-weight:700; color:var(--navy); line-height:1.3; }
 .form-type-desc { font-size:.66rem; color:var(--muted); line-height:1.4; }
 
-/* AKTIVNÍ FORMULÁŘ */
+/* ── Active form header ── */
 .form-header {
   display:flex; align-items:center; gap:1rem;
   margin-bottom:1.75rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border);
@@ -643,57 +745,212 @@ footer {
 <!-- ── CONTACT ───────────────────────────────────────────────────────────── -->
 <section class="contact" id="kontakt">
   <div class="container">
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="sec-eyebrow">Kontakt</div>
-        <h2 class="sec-title">Jsme tu pro Vás</h2>
-        <p class="sec-desc">Máte dotaz, potřebujete hlásit závadu nebo se chcete domluvit na schůzce? Neváhejte nás kontaktovat.</p>
-        <div class="contact-info-block">
-          <div class="c-item">
-            <div class="c-icon">📍</div>
-            <div>
-              <div class="c-label">Adresa</div>
-              <div class="c-value">Náměstí 5. května 14<br>345 62 Holýšov</div>
+
+    <!-- Header -->
+    <div class="reveal" style="margin-bottom:2.5rem">
+      <div class="sec-eyebrow">Kontakt</div>
+      <h2 class="sec-title">Jsme tu pro Vás</h2>
+      <p class="sec-desc">Máte dotaz, potřebujete hlásit závadu nebo se chcete domluvit na schůzce? Neváhejte nás kontaktovat.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+
+      <!-- LEFT: tabbed department directory -->
+      <div>
+        <!-- Tab bar -->
+        <div class="contact-tabs">
+          <button class="ctab active" onclick="showDept('spolecnost')">Společnost</button>
+          <button class="ctab" onclick="showDept('vedeni')">Vedení</button>
+          <button class="ctab" onclick="showDept('teplo')">Tepelné hosp.</button>
+          <button class="ctab" onclick="showDept('udrzba')">Údržba</button>
+          <button class="ctab" onclick="showDept('techsluzby')">Tech. služby</button>
+          <button class="ctab" onclick="showDept('ekonomika')">Ekonomický úsek</button>
+        </div>
+
+        <!-- ── PANEL: Společnost ── -->
+        <div class="dept-panel active" id="dept-spolecnost">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Sídlo společnosti</div>
+              <div class="pc-name">MTBS Holýšov s.r.o.</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📍</div>Náměstí 5. května 14, 345 62 Holýšov</div>
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491126">+420 379 491 126</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:info@mtbs-holysov.cz">info@mtbs-holysov.cz</a></div>
+                <div class="pc-row"><div class="pc-ico">🌐</div><a href="https://www.mtbs-holysov.cz" target="_blank">www.mtbs-holysov.cz</a></div>
+                <div class="pc-row"><div class="pc-ico">📦</div>Datová schránka: zrrmcu9</div>
+              </div>
             </div>
-          </div>
-          <div class="c-item">
-            <div class="c-icon">📞</div>
-            <div>
-              <div class="c-label">Telefon</div>
-              <div class="c-value">379 491 175 – správa bytů<br>379 491 126 – kotelna & údržba</div>
-            </div>
-          </div>
-          <div class="c-item">
-            <div class="c-icon">✉️</div>
-            <div>
-              <div class="c-label">E-mail</div>
-              <div class="c-value">info@mtbs-holysov.cz</div>
-            </div>
-          </div>
-          <div class="c-item">
-            <div class="c-icon">🕐</div>
-            <div>
-              <div class="c-label">Úřední hodiny</div>
-              <div class="hours-grid">
-                <span class="hour-day">Po – Čt</span><span class="hour-time">7:00 – 15:30</span>
-                <span class="hour-day">Pátek</span><span class="hour-time">7:00 – 14:00</span>
-                <span class="hour-day">Víkend</span><span class="hour-time">Zavřeno</span>
+            <div class="person-card">
+              <div class="pc-role">Úřední hodiny</div>
+              <div class="pc-name">Otevírací doba</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">🕐</div>Pondělí – Čtvrtek: 7:00 – 15:30</div>
+                <div class="pc-row"><div class="pc-ico">🕐</div>Pátek: 7:00 – 14:00</div>
+                <div class="pc-row"><div class="pc-ico">🚫</div>Víkend: Zavřeno</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="reveal d2" style="background:var(--navy);border-radius:14px;padding:2.5rem;border:1px solid rgba(200,146,42,.15)">
-        <div class="sec-eyebrow" style="margin-bottom:.5rem">Havarijní linka</div>
-        <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--gold-2);margin-bottom:.5rem">379 491 126</div>
-        <p style="font-size:.82rem;color:rgba(244,239,230,.5);margin-bottom:2rem;line-height:1.6">Poruchy tepla, vody a havarijní stavy – dostupné 24 hodin denně, 7 dní v týdnu.</p>
-        <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.75rem">
-          <div class="sec-eyebrow" style="margin-bottom:.75rem">Portál SVJ</div>
-          <p style="font-size:.82rem;color:rgba(244,239,230,.5);margin-bottom:1.25rem;line-height:1.6">Zástupci společenství vlastníků mají přístup k online agendě účetnictví SVJ.</p>
+
+        <!-- ── PANEL: Vedení ── -->
+        <div class="dept-panel" id="dept-vedeni">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Jednatelka</div>
+              <div class="pc-name">Ladislava Bozděchová</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423506">+420 379 423 506</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420724240809">+420 724 240 809</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:bozdechova@mtbs-holysov.cz">bozdechova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Jednatel</div>
+              <div class="pc-name">Vladimír Trnka</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423479">+420 379 423 479</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420724096155">+420 724 096 155</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:trnka@mtbs-holysov.cz">trnka@mtbs-holysov.cz</a></div>
+                <div class="pc-row"><div class="pc-ico">💬</div>Skype: mtbs.trnka</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL: Tepelné hospodářství ── -->
+        <div class="dept-panel" id="dept-teplo">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Vedoucí tepelného hospodářství</div>
+              <div class="pc-name">Jan Procházka</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491126">+420 379 491 126</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:prochazka@mtbs-holysov.cz">prochazka@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL: Bytová údržba ── -->
+        <div class="dept-panel" id="dept-udrzba">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Vedoucí údržby bytů</div>
+              <div class="pc-name">Jaroslav Hodek</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491126">+420 379 491 126</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:hodek@mtbs-holysov.cz">hodek@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL: Technické služby ── -->
+        <div class="dept-panel" id="dept-techsluzby">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Technické služby</div>
+              <div class="pc-name">Vladimír Trnka</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423479">+420 379 423 479</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420724096155">+420 724 096 155</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:trnka@mtbs-holysov.cz">trnka@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Technické služby</div>
+              <div class="pc-name">Ladislava Bozděchová</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423506">+420 379 423 506</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420724240809">+420 724 240 809</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:bozdechova@mtbs-holysov.cz">bozdechova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PANEL: Ekonomický úsek ── -->
+        <div class="dept-panel" id="dept-ekonomika">
+          <div class="dept-grid">
+            <div class="person-card">
+              <div class="pc-role">Ekonomický úsek – obecný kontakt</div>
+              <div class="pc-name dept">Oddělení</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491175">+420 379 491 175</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:info@mtbs-holysov.cz">info@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Vedoucí ekonomického úseku</div>
+              <div class="pc-name">Veronika Hodková</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423505">+420 379 423 505</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420776859422">+420 776 859 422</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:hodkova@mtbs-holysov.cz">hodkova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Provoz domů</div>
+              <div class="pc-name">Marcela Boubelová</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491471">+420 379 491 471</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:boubelova@mtbs-holysov.cz">boubelova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Účetní SVJ</div>
+              <div class="pc-name">Jitka Šmídová</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379423730">+420 379 423 730</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:smidova@mtbs-holysov.cz">smidova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Pokladní</div>
+              <div class="pc-name">Miluše Dopiráková</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491175">+420 379 491 175</a></div>
+                <div class="pc-row"><div class="pc-ico">📱</div><a href="tel:+420724240830">+420 724 240 830</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:dopirakova@mtbs-holysov.cz">dopirakova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+            <div class="person-card">
+              <div class="pc-role">Fakturace</div>
+              <div class="pc-name">Eva Volfová</div>
+              <div class="pc-contacts">
+                <div class="pc-row"><div class="pc-ico">📞</div><a href="tel:+420379491126">+420 379 491 126</a></div>
+                <div class="pc-row"><div class="pc-ico">✉️</div><a href="mailto:volfova@mtbs-holysov.cz">volfova@mtbs-holysov.cz</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left col -->
+
+      <!-- RIGHT: emergency + SVJ boxes -->
+      <div class="contact-right reveal d2">
+        <div class="contact-box">
+          <div class="cb-eyebrow">Havarijní linka</div>
+          <div class="cb-number">379 491 126</div>
+          <p class="cb-desc">Poruchy tepla, vody a havarijní stavy – dostupné 24 hodin denně, 7 dní v týdnu.</p>
+          <hr class="cb-divider">
+          <div class="cb-eyebrow">Portál SVJ</div>
+          <p class="cb-desc" style="margin-bottom:1.25rem">Zástupci společenství vlastníků mají přístup k online agendě účetnictví SVJ.</p>
           <a href="#" class="btn-gold" style="display:inline-flex;font-size:.82rem;padding:.65rem 1.4rem">Přihlásit do portálu →</a>
         </div>
+
+        <div class="contact-box light">
+          <div class="cb-eyebrow">Datová schránka</div>
+          <div class="cb-number">zrrmcu9</div>
+          <p class="cb-desc">Pro doručování úředních dokumentů a elektronickou komunikaci.</p>
+          <hr class="cb-divider">
+          <div class="cb-eyebrow">Hlavní e-mail</div>
+          <p class="cb-desc"><a href="mailto:info@mtbs-holysov.cz" style="color:var(--steel)">info@mtbs-holysov.cz</a></p>
+        </div>
       </div>
-    </div>
+
+    </div><!-- /contact-grid -->
   </div>
 </section>
 
@@ -1322,6 +1579,14 @@ document.getElementById('form-protokol').addEventListener('submit', e =>
 document.querySelectorAll('input, textarea').forEach(el => {
   el.addEventListener('input', () => el.classList.remove('err'));
 });
+
+// for contacts 
+function showDept(id) {
+  document.querySelectorAll('.dept-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('active'));
+  document.getElementById('dept-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
 </script>
 </body>
 </html>
